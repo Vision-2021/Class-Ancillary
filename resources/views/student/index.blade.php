@@ -37,29 +37,16 @@ border-radius: 50%;
 display: inline-block;
 
 }
-
-
-
-
   </style>
 </head>
 
 <body>
-
-
-
   <div id="main">
     <div id="header">
       <div id="logo">
         <h1>Class Ancillary </h1>
         <div class="slogan" style="color:red;">Don't hate, educate!</div>
-
-
-
-
         <button onclick="myfun1()" style="width:auto; background-color: red;">Logout</button>
-
-
       </div>
       <div id="menubar">
         <ul id="menu">
@@ -127,7 +114,7 @@ display: inline-block;
           @endforeach
 
 
-                <table class ="table table-bordered" style="width:600px;  height:100px;">
+            <table class ="table table-bordered" style="width:600px;  height:100px;">
 
                    <thead>
             <tr>
@@ -159,17 +146,7 @@ display: inline-block;
 
            </tbody>
 
-
-
-
         </table>
-
-
-
-
-
-
-
 
       </div>
     </div>
@@ -177,8 +154,6 @@ display: inline-block;
       <p>Copyright &copy; sylhet_engineering_college</p>
     </div>
   </div>
-
-
 
 
 

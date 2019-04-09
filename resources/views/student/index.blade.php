@@ -51,7 +51,7 @@ display: inline-block;
   <div id="main">
     <div id="header">
       <div id="logo">
-        <h1>Class Ancillary</h1>
+        <h1>Class Ancillary </h1>
         <div class="slogan" style="color:red;">Don't hate, educate!</div>
 
 
@@ -86,7 +86,7 @@ display: inline-block;
         <div class="sidebar">
           <h3>Exam Medicine!</h3>
           <p>Click here to get rid of exam! </p>
-          <form  action="{{route('main')}}" id="subscribe">
+        <form method="get" action="{{route('main')}}" id="subscribe">
             <p style="padding: 0 0 9px 0;"><input class="search" type="text" name="email_address" value="your email address" onclick="javascript: document.forms['subscribe'].email_address.value=''" /></p>
             <p><input class="subscribe" name="subscribe" type="submit" value="Subscribe" /></p>
           </form>
@@ -105,10 +105,26 @@ display: inline-block;
         <p>A website that helps you to get upadated with the class so that you wouldn't miss any of it.</p>
 		<p>This provides you with the class lectures,exam schedules,short questions,questions etc.</p>
 		<p>It will make a notification whether the class would happen or not.And the confirmation would come through the CR or the Course Teacher.</p>
-        <h2>Scheduled Routine</h2>
-       
+        <h2>Contains:</h2>
+        
+       <!--  <ul>
+          <li>Scheduled Routine</li>
+          <li>Tricky Questions</li>
+          <li>Important Files</li>
+          <li>Sudden Updated Class</li>
+          <li>Term Test Questons</li>
           
-     
+        </ul> -->
+        @foreach($subjects as $routine)
+          
+          <ul>
+            
+            <li>{{$routine['Course_Code']}}</td>
+            <p>{{$routine['Course_Title']}}</p> 
+   
+          </ul>
+
+          @endforeach
 
 
                 <table class ="table table-bordered" style="width:600px;  height:100px;">
@@ -116,7 +132,7 @@ display: inline-block;
                    <thead>
             <tr>
         <th>Routine</th>
-        <th>Class</th>
+        <th>class</th>
         <th>Status</th>
             </tr>
             </thead>
@@ -126,7 +142,7 @@ display: inline-block;
           <tr>
             
             <td>{{$routine['Routine']}}</td>
-            <td>{{$routine['Class']}}</td>
+            <td>{{$routine['class']}}</td>
 
             @if($routine->Status==false)
             <td><span class="dot"></span></td>

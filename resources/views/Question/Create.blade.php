@@ -6,7 +6,7 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header" style="background-color:   #ccccb3">Logged as admin!
+              <div class="card-header" style="background-color:   #ccccb3">Logged as admin!
 
 
                 </div>

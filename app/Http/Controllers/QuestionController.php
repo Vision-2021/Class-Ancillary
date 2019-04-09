@@ -3,19 +3,26 @@
 namespace App\Http\Controllers;
 use App\Question;
 use Illuminate\Http\Request;
-use App;
+use Illuminate\Support\Facades\Storage;
 use Input;
 use Validator;
-use Illuminate\Support\Facades\Storage;
+use App;
 use Auth;
 use DB;
 
 class QuestionController extends Controller
 {
-     public function __construct()
+    
+    public function __construct()
     {
+
         $this->middleware('auth:admin');
+
     }
+
+
+
+
     /**
      * Display a listing of the resource.
      *
@@ -44,32 +51,31 @@ class QuestionController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        $this->validate($request, [
+    {   
+         $this->validate($request, [
 
                 'file' => 'required|file|max:204800'
 
-        ]);
+    ]);
 
-      if($request->hasFile('file'))
+
+
+        if($request->hasFile('file'))
         {
+            $questionname= $request->file->getClientOriginalName();
+            $questionsize= $request->file->getClientSize();
 
-        $filename=$request->file->getClientOriginalName();
-        $filesize=$request->file->getClientSize();
-          $request->file->storeAs('public',$filename);
-          $files=new Question;
-          $files->file=$filename;
-          $files->size=$filesize;
-          $files->save();
-          return redirect()->route('question');
+             $request->file->storeAs('public',$questionname);
 
-         // $url= Storage::url('pic.jpg');
-          //return "<img src='".$url."'/>";
-        //return  storage::putFile('public',$request->file('file'));
-       //return  $request->file->extension();
+            $questions = new Question;
+            $questions->file= $questionname;
+            $questions->size = $questionsize;
+            $questions-> save();
+            return redirect()->route('question');
 
-        // return $request->file->store('public');
-     }else return "There is no file";
+        }
+        else return "There is no questions!";
+        
     }
 
     /**
@@ -118,11 +124,20 @@ class QuestionController extends Controller
        $questions->delete();
         return redirect()->route('question')->with('success','Question deleted successfully');
     }
+
+
+     public function download($file_name)
+    {
+          $file_path  = storage_path('app/public/'.$file_name);
+          
+          return response()->download($file_path); 
+
+
+
+    }
     public function remove()
     {
         DB::table('questions')->truncate();
         return redirect()->route('question');
     }
- 
-    
 }

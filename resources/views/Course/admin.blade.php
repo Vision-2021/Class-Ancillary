@@ -23,7 +23,7 @@
 
 
                <td> <a href="{{route('question')}}" class="btn btn-success">Upload Questions</a></td>
-                <td> <a href="{{route('course')}}" class="btn btn-success">Course</a></td>
+               <td> <a href="{{route('course')}}" class="btn btn-success">Course</a></td>
            </tr>
         </table>
               </ul>
@@ -59,8 +59,8 @@
                 <h2>Class Ancillary</h2>
             </div>
             <div class="pull-right">
-                <a href="{{route('daily.create')}}" class="btn btn-dark"> Add new class schedule</a>
-                <a href="{{route('daily.truncate')}}" class="btn btn-dark"> Remove All</a>
+                <a href="{{route('course.create')}}" class="btn btn-dark"> Add new Course</a>
+                <a href="{{route('course.truncate')}}" class="btn btn-dark"> Remove All</a>
 
             </div>
         </div>
@@ -75,33 +75,19 @@
             <thead>
             <tr>
          <th>id</th>
-        <th>Routine</th>
-        <th>class</th>
-        <th>Status</th>
-        
-                <th width="280px">Action</th>
+        <th>Course Code</th>
+        <th>Course Title</th>
             </tr>
             </thead>
             <tbody>
-            @foreach($dailymodels as $daily)
+            @foreach($subjects as $daily)
 
                 <tr>
                     <td>{{$daily->id}}</td>
-                    <td>{{$daily->Routine}}</td>
-                    <td>{{$daily->class}}</td>
-                    <td>{{$daily->Status}}</td>
+                    <td>{{$daily->Course_Code}}</td>
+                    <td>{{$daily->Course_Title}}</td>
                     
-                    <td>
-                         <form action="{{route('daily.destroy',['id'=>$daily->id])}}" method="post" role="form" class="delete_form">
-                            
-                            <a href="{{route('daily.edit',['id'=>$daily->id])}}" class="btn btn-primary">Update</a>
-                            <input type="hidden" name="_token" value="{{csrf_token()}}">
-                            <input type="hidden" name="_method" value="DELETE">
-                            <button type="submit" class="btn btn-danger">Remove</button>
-                        </form>
-
-
-                    </td>
+    
                 </tr>
             @endforeach
 

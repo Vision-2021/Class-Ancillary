@@ -172,7 +172,7 @@ button:hover {
         <script>
     
     function myfun(){
-        location.href="{{ url('/home') }}";
+        location.href="{{ route('main') }}";
     }
 </script>
 

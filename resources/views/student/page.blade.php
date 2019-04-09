@@ -68,7 +68,7 @@ button:hover {
         <div class="sidebar">
           <h3>Exam Medicine!</h3>
           <p>Click here to get rid of exam! </p>
-          <form method="post" action="#" id="subscribe">
+        <form method="get" action="{{route('page')}}" id="subscribe">
             <p style="padding: 0 0 9px 0;"><input class="search" type="text" name="email_address" value="your email address" onclick="javascript: document.forms['subscribe'].email_address.value=''" /></p>
             <p><input class="subscribe" name="subscribe" type="submit" value="Subscribe" /></p>
           </form>
@@ -102,7 +102,7 @@ button:hover {
             <td>{{$file->file}}</td>
             <td>{{$file->size}}</td>
             <td>{{$file->created_at}}</td>
-              <td > <a href="{{route('downloadfile',$file->file)}}" class="btn btn-primary">Download</a> 
+              <td > <a href="{{route('file.download',$file->file)}}" class="btn btn-primary">Download</a> 
               </td> 
 
           </tr>

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Dailymodel extends Model
 {
-    protected $table='dailymodels';
+   protected $table='dailymodels';
     protected $primaryKey='id';
-    protected $fillable=['Routine','Class','Status'];
+    protected $fillable=['Routine','class','Status'];
 }

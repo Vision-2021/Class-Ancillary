@@ -18,6 +18,7 @@
                <td class="current"> <a href="{{route('file')}}" class="btn btn-success">Upload Files</a></td>
            
                <td> <a href="{{route('question')}}" class="btn btn-success">Upload Questions</a></td>
+               <td> <a href="{{route('course')}}" class="btn btn-success">Course</a></td>
            </tr>
         </table>
               </ul>
@@ -36,20 +37,20 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header" style="background-color:   #ccccb3">Logged as admin!
+                <div class="card-header" style="background-color: #d6d6c2">Logged as admin!
 
 
                 </div>
                 
 
-                <div class="card-body"style="background-color:#ebebe0">
+                <div class="card-body" style="background-color: #d6d6c2">
                     <div class="row">
         <div class="col-lg-12 margin-tb" style="margin-top: 20px;">
             <div class="pull-left">
                 <h2>Class Ancillary</h2>
             </div>
             <div class="pull-right">
-                <a href="{{route('file.create')}}" class="btn btn-dark">upload Files</a>
+                <a href="{{route('Upload.create')}}" class="btn btn-dark">Upload Files</a>
                 <a href="{{route('file.truncate')}}" class="btn btn-dark"> Remove All</a>
             </div>
         </div>

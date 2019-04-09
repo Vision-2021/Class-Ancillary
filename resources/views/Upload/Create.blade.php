@@ -6,12 +6,12 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header"style="background-color:   #ccccb3">Logged as admin!
+                <div class="card-header">Logged as admin!
 
 
                 </div>
         
-                <div class="card-body" style=" height:200px;background-color:#ebebe0;">
+                <div class="card-body" style=" height:200px;">
                     <div class="row">
                       
                       <br>

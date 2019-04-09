@@ -39,7 +39,7 @@ button:hover {
   <div id="main">
     <div id="header">
       <div id="logo">
-        <h1>Class Ancillary </h1>
+        <h1>Class Ancillary</h1>
         <div class="slogan" style="color:red;" >Be educated, be empowered!</div>
         <button onclick="myfun1()" style="width:auto;background-color: red;">Logout</button>
       </div>
@@ -68,7 +68,7 @@ button:hover {
         <div class="sidebar">
           <h3>Newsletter</h3>
           <p>If you would like to receive our newletter, please enter your email address and click 'Subscribe'.</p>
-          <form  action="{{route('contact')}}" id="subscribe">
+         <form method="get" action="{{route('contact')}}" id="subscribe">
             <p style="padding: 0 0 9px 0;"><input class="search" type="text" name="email_address" value="your email address" onclick="javascript: document.forms['subscribe'].email_address.value=''" /></p>
             <p><input class="subscribe" name="subscribe" type="submit" value="Subscribe" /></p>
           </form>
@@ -85,7 +85,7 @@ button:hover {
         <!-- insert the page content here -->
         <h1>Help?</h1>
         <p>Go through the process written below:</p>
-        <form action="contact" method="get">
+        <form method="get" action="{{route('contact')}}" id="subscribe">
           <div class="form_settings">
             <p><span>Name</span><input class="contact" type="text" name="your_name" value="" /></p>
             <p><span>Email Address</span><input class="contact" type="text" name="your_email" value="" /></p>

@@ -6,7 +6,6 @@ use App\Routinemodel;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Auth;
 use DB;
 
 class RoutineController extends Controller
@@ -16,11 +15,12 @@ class RoutineController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    // public function index()
+    // {
+    //     $routine=routinemodels::all();
+    //     return view('admin',compact('routine'));
+    // }
 
-    public function __construct()
-    {
-        $this->middleware('auth:admin');
-    }
     
     public function create()
     {
@@ -78,18 +78,7 @@ class RoutineController extends Controller
             $routine->Class5 = $request->get('Class5');
             $routine->Class6 = $request->get('Class6');
             $routine->save();
-            return redirect()->route('admin.dashboard')->with('success','Routine updated successfully');;
-
-
-
-
-
-       // Routinemodel::findOrFail($id)->update($request->all());
-        
-
-
-
-
+            return redirect()->route('admin.dashboard')->with('success','Routine updated successfully');
 
 
     }

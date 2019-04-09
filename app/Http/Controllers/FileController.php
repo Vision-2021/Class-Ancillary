@@ -3,36 +3,28 @@
 namespace App\Http\Controllers;
 
 use Webpatser\Uuid\Uuid;
-
-use Illuminate\Http\Request;
 use App;
+use App\File;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Input;
 use Validator;
-use Illuminate\Support\Facades\Storage;
-use App\File;
-use Auth;
 use DB;
 
 class FileController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-
-    public function __construct()
+   
+  public function __construct()
     {
         $this->middleware('auth:admin');
     }
+
 
     public function index()
     {
                      $files=File::all();
         return view('Upload.admin',compact('files'));
-
-
-    }
+            }
 
     
     public function create()
@@ -40,59 +32,48 @@ class FileController extends Controller
         return view('Upload.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    
     public function store(Request $request)
     {
-            $this->validate($request, [
+          $this->validate($request, [
 
                 'file' => 'required|file|max:204800'
 
-        ]);
+    ]);
 
-      if($request->hasFile('file'))
-        {
 
-        $filename=$request->file->getClientOriginalName();
-        $filesize=$request->file->getClientSize();
-        $request->file->storeAs('public',$filename);
-          $files=new File;
-          $files->file=$filename;
-          $files->size=$filesize;
-          $files->save();
-          return redirect()->route('file');
 
-         // $url= Storage::url('pic.jpg');
-          //return "<img src='".$url."'/>";
-        //return  storage::putFile('public',$request->file('file'));
-       //return  $request->file->extension();
+        if($request->hasFile('file'))
 
-        // return $request->file->store('public');
-     }else return "There is no file";
+         {
+           $filename= $request->file->getClientOriginalName();
+           $filesize= $request->file->getClientSize();
+           $request->file->storeAs('public',$filename);
+           $files=new File;
+           $files->file=$filename;
+           $files->size=$filesize;
+           $files->save();
+           return redirect()->route('file');
+       }
+
+
+           else return "There is no file!";
+        
     }
 
 
 
 
-  
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-   
+  public function download($file_name)
+    {
+          $file_path  = storage_path('app/public/'.$file_name);
+          
+          return response()->download($file_path); 
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
+
+    }
+    
     public function edit($id)
     {
        
@@ -101,7 +82,8 @@ class FileController extends Controller
 
     public function show($id)
     {
-        
+        $file=File::findOrFail($id);
+        return view('Show',compact('file'));
     }
     /**
      * Update the specified resource in storage.
@@ -127,14 +109,7 @@ class FileController extends Controller
        $files->delete();
         return redirect()->route('file')->with('success','File deleted successfully');
     }
- 
-  // public function download($file_name) {
-  //   $file_path = storage_path('app/public/'.$file_name);
-    
-  //   return response()->download($file_path);
-  // }
-
-     public function remove()
+    public function remove()
     {
         DB::table('files')->truncate();
         return redirect()->route('file');

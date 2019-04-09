@@ -44,7 +44,7 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group{{$errors->has('name')?' has-error':''}}">
                     <strong style="color: white;">class:</strong>
-                    <input type="text" name="Class" value="{{ $dailymodel->Class }}" class="form-control" placeholder="Enter the class here!">
+                    <input type="text" name="class" value="{{ $dailymodel->class }}" class="form-control" placeholder="Enter the class here!">
                     <span class="text-danger">{{$errors->first('name')}}</span>
                 </div>
             </div>
@@ -52,7 +52,8 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group{{$errors->has('name')?' has-error':''}}">
                     <strong style="color: white;">Status:</strong>
-                    <input type="number" name="Status" value="{{ $dailymodel->Status}}" class="form-control">                
+                   <p style="color: white">Yes<input type="radio" name="Status" value="1"></p>
+                    <p style="color: white">No<input type="radio" name="Status" value="0"></p>         
                 </div>
             </div>
            

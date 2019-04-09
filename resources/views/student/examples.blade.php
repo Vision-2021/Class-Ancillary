@@ -24,6 +24,7 @@
     border-collapse:collapse;
     padding:8px;
     text-align:center;
+    font-size: 20px;
     font-family:Garamond;
 
 

@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header"style="background-color:   #ccccb3">{{ __('Admin Login') }}</div>
+                  <div class="card-header"style="background-color:   #ccccb3">{{ __('Admin Login') }}</div>
 
                 <div class="card-body"style="background-color:#ebebe0">
                     <form method="POST" action="{{ route('admin.login.submit') }}">
@@ -57,11 +57,11 @@
                                     {{ __('Login') }}
                                 </button>
 
-                              <!--   @if (Route::has('password.request'))
+                                @if (Route::has('password.request'))
                                     <a class="btn btn-link" href="{{ route('password.request') }}">
                                         {{ __('Forgot Your Password?') }}
                                     </a>
-                                @endif -->
+                                @endif
                             </div>
                         </div>
                     </form>

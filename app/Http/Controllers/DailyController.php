@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Dailymodel;
+
+use Illuminate\Support\Facades\Validator;
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use Auth;
 use DB;
 
@@ -11,18 +14,20 @@ class DailyController extends Controller
 {
 
 
-     public function __construct()
+    public function __construct()
     {
         $this->middleware('auth:admin');
     }
-	public function index()
-     {
-        $dailymodels=Dailymodel::all();
-        return view('Daily.admin',compact('dailymodels'));
-     }
-     public function create()
+    
+    public function index()
     {
-        return view('Daily.Create');
+        
+       $dailymodels=Dailymodel::all();
+         return view('Daily.admin',compact('dailymodels'));
+    }
+    public function create()
+    {
+        return view('daily.create');
     }
 
     
@@ -30,16 +35,18 @@ class DailyController extends Controller
     {
         $request->validate([
            'Routine'=>'required',
-            'Class'=>'required'
+           'class'=>'required'
            
         ]);
         Dailymodel::create($request->all());
         return redirect()->route('daily')->with('success','Routine generated successfully');
     }
 
-     
+    
+    
 
-     public function edit($id)
+    
+    public function edit($id)
     {
         $dailymodel=Dailymodel::findOrFail($id);
         return view('Daily.Edit',compact('dailymodel','id'));
@@ -50,14 +57,14 @@ class DailyController extends Controller
     {
         $this->validate($request,[
             'Routine'=>'required',
-            'Class'=>'required',
-            'Status'=>'required',
+            'class'=>'required',
+            'Status'=>'required'
             
         ]);
         
             $routine=Dailymodel::find($id);
             $routine->Routine = $request->get('Routine');
-            $routine->Class = $request->get('Class');
+            $routine->class = $request->get('class');
             $routine->Status = $request->get('Status');
             
             $routine->save();
@@ -65,7 +72,9 @@ class DailyController extends Controller
 
 
     }
-        public function destroy($id)
+
+    
+    public function destroy($id)
     {
        $routine= Dailymodel::find($id);
        $routine->delete();
@@ -77,7 +86,4 @@ class DailyController extends Controller
         DB::table('dailymodels')->truncate();
         return redirect()->route('daily');
     }
-
-   
-  
 }

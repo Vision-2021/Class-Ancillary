@@ -8,7 +8,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
 
-    <title>{{ config('app.name', 'Class Ancillary') }}</title>
+    <title>Class Ancillary</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>

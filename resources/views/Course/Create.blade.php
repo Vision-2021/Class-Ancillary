@@ -15,32 +15,33 @@
         
                     
                         <div class="pull-right">
-                <a href="{{route('daily')}}" class="btn btn-primary">Back</a>
+                <a href="{{route('course')}}" class="btn btn-primary">Back</a>
             </div>
                       
                       <br>
 
                       <div class="col-lg-offset-4 col-lg-4">
-                      <center> <h1>Upload a new class schedule!</h1></center>
-                      <form action="{{route('daily.store')}}" method="post">
+                      <center> <h1>ADD a new Course!</h1></center>
+                      <form action="{{route('course.store')}}" method="post">
                         @csrf 
 
-                        <p>Routine:
-                        <input type="text" name="Routine">
+                        <p>Course Code:
+                        <input type="text" name="Course_Code">
                         <br>
-                    </p>
-                        <p>Schedule: 
-                        <input type="text" name="class">
+                        </p>
+
+
+                        <p>Course Title: 
+                        <input type="text" name="Course_Title">
                         <br></p>
 
-                        <p>Status:
-                        <input type="radio" name="Status" value="1">Yes
-                        <input type="radio" name="Status" value="0">No
+                        <p>Color: 
+                        <input type="text" name="Color">
                         <br></p>
 
 
 
-                        <input type="submit" value="Add to Routine"class="btn btn-primary">
+                        <input type="submit" value="Add  Course"class="btn btn-primary">
                           
 
 

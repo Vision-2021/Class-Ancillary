@@ -7,7 +7,7 @@
     <div class="row">
         <div class="col-lg-12 margin-tb" style="margin-top: 20px;">
             <div class="pull-left">
-                <h2 style="color:white;">Add New Routine</h2>
+                <h2>Add New Routine</h2>
             </div>
             <div class="pull-right">
                 <a href="{{route('admin.dashboard')}}" class="btn btn-primary">Back</a>

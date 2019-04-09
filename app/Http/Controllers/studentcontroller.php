@@ -6,44 +6,33 @@ namespace App\Http\Controllers;
 
 use Webpatser\Uuid\Uuid;
 use App\File;
-use App\Routinemodel;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Http\Request;
-use App\Student;
 use App\Question;
+use App\Routinemodel;
+use Illuminate\Http\Request;
 use App\Dailymodel;
+use App\Student;
+use App\Subject;
 use Auth;
 class studentcontroller extends Controller
 {
-     public function __construct()
-    {
-        $this->middleware('auth:web');
-    }
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+   
+    
     public function index()
     {
-        
-           $dailymodels=Dailymodel::all();
-        return view('student.index',compact('dailymodels'));
+        $subjects=Subject::all();
+         $dailymodels=Dailymodel::all();
+        return view('student.index',compact('dailymodels','subjects'));
     }
     
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
     
     
     public function examples()
     {
 
         $routinemodel= Routinemodel::all()->toArray();
-         return view('student.examples',compact('routinemodel'));
+        return view('student.examples',compact('routinemodel'));
     }
     public function page()
     {
@@ -52,7 +41,7 @@ class studentcontroller extends Controller
     }
     public function another_page()
     {
-         $questions=Question::all();
+                $questions=Question::all();
         return view('student.another_page',compact('questions'));
     }
 
@@ -62,12 +51,7 @@ class studentcontroller extends Controller
 
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    
     public function store(Request $request)
     {
         $this->validate($request,[
@@ -95,58 +79,30 @@ class studentcontroller extends Controller
         return redirect()->route('index');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     public function show($id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     public function edit($id)
     {
-        //
+        
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     public function update(Request $request, $id)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     public function destroy($id)
     {
         //
     }
 
-    public function download($id)
-    {
-
-        $files= File::find('$id');
-        return Storage::download($pathToFile,$files->file);
-
-
-    }
+   
 
 }

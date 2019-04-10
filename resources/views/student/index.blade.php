@@ -92,7 +92,7 @@ display: inline-block;
         <p>A website that helps you to get upadated with the class so that you wouldn't miss any of it.</p>
 		<p>This provides you with the class lectures,exam schedules,short questions,questions etc.</p>
 		<p>It will make a notification whether the class would happen or not.And the confirmation would come through the CR or the Course Teacher.</p>
-        <h2>Contains:</h2>
+        <h2>Course Contains:</h2>
         
        <!--  <ul>
           <li>Scheduled Routine</li>

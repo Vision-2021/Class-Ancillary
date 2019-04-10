@@ -101,7 +101,7 @@ button:hover {
             
             <td>{{$question->file}}</td>
             <td>{{$question->size}}</td>
-            <td>{{$question->created_at}}</td>
+           <td>{{$question->created_at->diffForHumans()}}</td>
               <td > <a href="{{route('question.download',$question->file)}}" class="btn btn-primary">Download</a> 
               </td> 
 

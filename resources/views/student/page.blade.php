@@ -101,7 +101,7 @@ button:hover {
             
             <td>{{$file->file}}</td>
             <td>{{$file->size}}</td>
-            <td>{{$file->created_at}}</td>
+            <td>{{$file->created_at->diffForHumans()}}</td>
               <td > <a href="{{route('file.download',$file->file)}}" class="btn btn-primary">Download</a> 
               </td> 
 
